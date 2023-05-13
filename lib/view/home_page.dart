@@ -104,75 +104,106 @@ class HomePage extends StatelessWidget {
               const SizedBox(
                 height: 13,
               ),
-              ClipRRect(
-                borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(14),
-                    topRight: Radius.circular(14)),
-                child: Container(
-                  height: 70,
-                  width: 140,
-                  decoration: BoxDecoration(), //그림자
-                  child: Image.asset(
-                    'assets/images/le_chae.jpg',
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
-              Container(
-                height: 70,
-                width: 140,
-                decoration: BoxDecoration(
-                  border: Border.all(color: GREY200),
-                  borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(14),
-                      bottomRight: Radius.circular(14)),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 12.0, top: 8),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        child: Row(children: [
-                          Icon(
-                            Icons.star,
-                            color: YELLOW800,
-                            size: 12.5,
-                          ),
-                          Text(
-                            ' 5.0',
-                            style: TextStyle(
-                              color: GREY900,
-                              fontWeight: FontWeight.w800,
-                              fontSize: 12,
-                            ),
-                          )
-                        ]),
-                      ),
-                      const Text(
-                        '채원바라기 덕부름꾼',
-                        style: TextStyle(
-                            color: GREY900,
-                            fontWeight: FontWeight.w700,
-                            fontSize: 12),
-                      ),
-                      const Text(
-                        '완전 잘해 주십니다!!',
-                        style: TextStyle(
-                            color: GREY400,
-                            fontWeight: FontWeight.w500,
-                            fontSize: 10),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+              NewReviewUploadPicture(),
+              NewReviewUploadText(),
               const SizedBox(
                 height: 20,
               )
             ],
           ),
         ],
+      ),
+    );
+  }
+}
+
+class NewReviewUploadText extends StatelessWidget {
+  const NewReviewUploadText({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      //설명부분
+      height: 70,
+      width: 140,
+      decoration: BoxDecoration(
+        color: WHITE,
+        boxShadow: [
+          BoxShadow(
+              color: GREY400.withOpacity(0.7),
+              blurRadius: 4,
+              spreadRadius: 0,
+              offset: const Offset(0, 1))
+        ],
+        border: Border.all(color: GREY200),
+        borderRadius: BorderRadius.only(
+            bottomLeft: Radius.circular(14), bottomRight: Radius.circular(14)),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.only(left: 12.0, top: 8),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              child: Row(children: [
+                Icon(
+                  Icons.star,
+                  color: YELLOW800,
+                  size: 12.5,
+                ),
+                Text(
+                  ' 5.0',
+                  style: TextStyle(
+                    color: GREY900,
+                    fontWeight: FontWeight.w800,
+                    fontSize: 12,
+                  ),
+                )
+              ]),
+            ),
+            const Text(
+              '채원바라기 덕부름꾼',
+              style: TextStyle(
+                  color: GREY900,
+                  fontWeight: FontWeight.w700,
+                  fontSize: 12,
+                  height: 1.5),
+            ),
+            const Text(
+              '완전 잘해 주십니다!!',
+              style: TextStyle(
+                  color: GREY400,
+                  fontWeight: FontWeight.w500,
+                  fontSize: 10,
+                  height: 1.5),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class NewReviewUploadPicture extends StatelessWidget {
+  const NewReviewUploadPicture({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ClipRRect(
+      //사진부분
+      borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(14), topRight: Radius.circular(14)),
+      child: Container(
+        height: 70,
+        width: 140,
+        child: Image.asset(
+          'assets/images/le_chae.jpg',
+          fit: BoxFit.cover,
+        ),
       ),
     );
   }
