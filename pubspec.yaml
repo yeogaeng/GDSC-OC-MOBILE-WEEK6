@@ -27,6 +27,8 @@ flutter:
   assets:
     - assets/images/le.png
     - assets/images/le_chae.jpg
+    - assets/images/ljh.jpg
+    - assets/images/leeknow.jpeg
 
   fonts:
     - family: Dangam

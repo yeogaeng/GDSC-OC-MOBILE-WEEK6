@@ -104,8 +104,47 @@ class HomePage extends StatelessWidget {
               const SizedBox(
                 height: 13,
               ),
-              NewReviewUploadPicture(),
-              NewReviewUploadText(),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 20),
+                      child: Column(children: [
+                        NewReviewUploadPicture(
+                          img: 'assets/images/le_chae.jpg',
+                        ),
+                        NewReviewUploadText(
+                          title: '채원바라기 덕부름꾼',
+                          introducing: '완전 잘해 주십니다!!',
+                        ),
+                      ]),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 13),
+                      child: Column(children: [
+                        NewReviewUploadPicture(img: 'assets/images/ljh.jpg'),
+                        NewReviewUploadText(
+                          title: '이재현재 덕부름꾼',
+                          introducing: '최고의 덕부름꾼!!',
+                        ),
+                      ]),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 13),
+                      child: Column(children: [
+                        NewReviewUploadPicture(
+                          img: 'assets/images/leeknow.jpeg',
+                        ),
+                        NewReviewUploadText(
+                          title: '리노리',
+                          introducing: '완전 잘해 주십니다!!',
+                        ),
+                      ]),
+                    ),
+                  ],
+                ),
+              ),
               const SizedBox(
                 height: 20,
               )
@@ -119,13 +158,17 @@ class HomePage extends StatelessWidget {
 
 class NewReviewUploadText extends StatelessWidget {
   const NewReviewUploadText({
+    //설명부분
     super.key,
+    required this.title,
+    required this.introducing,
   });
 
   @override
+  final String title;
+  final String introducing;
   Widget build(BuildContext context) {
     return Container(
-      //설명부분
       height: 70,
       width: 140,
       decoration: BoxDecoration(
@@ -163,16 +206,16 @@ class NewReviewUploadText extends StatelessWidget {
                 )
               ]),
             ),
-            const Text(
-              '채원바라기 덕부름꾼',
+            Text(
+              title, //'채원바라기 덕부름꾼',
               style: TextStyle(
                   color: GREY900,
                   fontWeight: FontWeight.w700,
                   fontSize: 12,
                   height: 1.5),
             ),
-            const Text(
-              '완전 잘해 주십니다!!',
+            Text(
+              introducing, //'완전 잘해 주십니다!!',
               style: TextStyle(
                   color: GREY400,
                   fontWeight: FontWeight.w500,
@@ -189,20 +232,21 @@ class NewReviewUploadText extends StatelessWidget {
 class NewReviewUploadPicture extends StatelessWidget {
   const NewReviewUploadPicture({
     super.key,
+    required this.img, //사진
   });
 
   @override
+  final String img;
   Widget build(BuildContext context) {
     return ClipRRect(
-      //사진부분
       borderRadius: BorderRadius.only(
           topLeft: Radius.circular(14), topRight: Radius.circular(14)),
       child: Container(
         height: 70,
         width: 140,
         child: Image.asset(
-          'assets/images/le_chae.jpg',
-          fit: BoxFit.cover,
+          img, //'assets/images/le_chae.jpg',
+          fit: BoxFit.cover, //BoxFit.cover,
         ),
       ),
     );
@@ -221,7 +265,8 @@ class HowtoUseApp extends StatelessWidget {
       child: Container(
         height: 80,
         decoration: BoxDecoration(
-          color: GREEN300,
+          color: Color(0XFFF7FFE7),
+          borderRadius: BorderRadius.circular(12),
         ),
         child: Row(mainAxisAlignment: MainAxisAlignment.start, children: [
           Padding(
@@ -229,12 +274,13 @@ class HowtoUseApp extends StatelessWidget {
             child: Container(
                 height: 48,
                 width: 48,
-                decoration:
-                    BoxDecoration(color: GREEN800, shape: BoxShape.circle),
+                decoration: BoxDecoration(
+                    color: Color(0xFFDBFFAC), shape: BoxShape.circle),
                 child: Center(
                   child: const Text(
                     'Tip!',
-                    style: TextStyle(fontSize: 16.0),
+                    style:
+                        TextStyle(fontSize: 16.0, fontWeight: FontWeight.w800),
                   ),
                 )),
           ),
@@ -250,7 +296,8 @@ class HowtoUseApp extends StatelessWidget {
                     children: [
                       Text(
                         '덕부름 이용 방법',
-                        style: TextStyle(fontWeight: FontWeight.w700),
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.w700),
                       ),
                       SizedBox(
                         height: 4,
@@ -258,9 +305,17 @@ class HowtoUseApp extends StatelessWidget {
                       Row(
                         children: [
                           Text(
-                            '덕부름의 이용 방법을 알아보세요!',
+                            '덕부름의 이용 방법을 알아보세요!  ',
+                            style: TextStyle(
+                                color: GREY700,
+                                fontSize: 13,
+                                fontWeight: FontWeight.w500),
                           ),
-                          Icon(Icons.arrow_forward_ios),
+                          Icon(
+                            Icons.arrow_forward_ios,
+                            size: 12,
+                            color: GREY600,
+                          ),
                         ],
                       ),
                     ]),
@@ -297,13 +352,16 @@ class GoSimbooreumApply extends StatelessWidget {
                   children: [
                     Text(
                       '심부름 신청하러 가기',
-                      style:
-                          TextStyle(color: WHITE, fontWeight: FontWeight.w700),
+                      style: TextStyle(
+                          color: WHITE,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 16),
                     ),
                     SizedBox(
                       height: 4,
                     ),
-                    Text('덕질 관련 심부름을 신청해 보세요!', style: TextStyle(color: WHITE))
+                    Text('덕질 관련 심부름을 신청해 보세요!',
+                        style: TextStyle(color: WHITE, fontSize: 14))
                   ]),
             ),
           ),
@@ -488,10 +546,17 @@ class NewRegisteredBar extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 24),
       child: Container(
         child: Row(children: [
-          Text(textTitle),
+          Text(
+            textTitle,
+            style: TextStyle(
+                color: GREY900, fontSize: 16, fontWeight: FontWeight.w800),
+          ),
           Spacer(),
-          Text('더보기'),
-          Icon(Icons.arrow_forward_ios),
+          Text(
+            '더보기 ',
+            style: TextStyle(color: GREY400),
+          ),
+          Icon(Icons.arrow_forward_ios, size: 9, color: GREY400),
         ]),
       ),
     );
