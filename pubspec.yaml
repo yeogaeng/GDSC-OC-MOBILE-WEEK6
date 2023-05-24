@@ -6,7 +6,7 @@ publish_to: "none"
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.19.6 <3.0.0"
+  sdk: ">=3.0.0 <4.0.0"
 
 dependencies:
   flutter:
@@ -25,10 +25,7 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/images/le.png
-    - assets/images/le_chae.jpg
-    - assets/images/ljh.jpg
-    - assets/images/leeknow.jpeg
+    - assets/images/
 
   fonts:
     - family: Dangam
